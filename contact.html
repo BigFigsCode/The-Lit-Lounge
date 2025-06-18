@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - The Lit Lounge</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <h1 style="font-size: 100px;">The Lit Lounge</h1>
+            <ul>
+                <li style="font-size: 34px;"><a href="index.html">Home</a></li>
+                <li style="font-size: 34px;"><a href="browse.html">Browse</a></li>
+                <li style="font-size: 34px;"><a href="about.html">About</a></li>
+                <li style="font-size: 34px;"><a href="cart.html">Cart</a></li>
+                <li style="font-size: 34px;"><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <section style="padding: 40px; max-width: 800px; margin: 0 auto;">
+        <h2 style="font-size: 62px;">Contact Us</h2>
+        <p style="font-size: 24px;">Have a question, suggestion, or just want to say hello? Use the forms below to reach out or sign up for our newsletter.</p>
+
+        <!-- Contact Form (POST) -->
+        <form method="POST" action="#" style="margin-top: 40px;">
+            <label for="name" style="font-size: 22px;">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email" style="font-size: 22px;">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="message" style="font-size: 22px;">Message:</label><br>
+            <textarea id="message" name="message" maxlength="256" rows="5" cols="50" required></textarea><br><br>
+
+            <button type="submit" style="font-size: 20px;">Submit</button>
+            <button type="reset" style="font-size: 20px;">Reset</button>
+        </form>
+
+        <!-- Newsletter Form (GET) -->
+        <form method="GET" action="#" style="margin-top: 60px;">
+            <fieldset>
+                <legend style="font-size: 24px;">Newsletter Signup</legend>
+
+                <label for="age" style="font-size: 22px;">Age:</label>
+                <input type="number" id="age" name="age" min="13" max="120" required><br><br>
+
+                <p style="font-size: 22px;">Favorite Genres:</p>
+                <input type="checkbox" name="genre" value="sci-fi"> Sci-Fi<br>
+                <input type="checkbox" name="genre" value="mystery"> Mystery<br>
+                <input type="checkbox" name="genre" value="romance"> Romance<br><br>
+
+                <p style="font-size: 22px;">Preferred Format:</p>
+                <input type="radio" name="format" value="ebook" required> eBook<br>
+                <input type="radio" name="format" value="audiobook"> Audiobook<br>
+                <input type="radio" name="format" value="paperback"> Paperback<br><br>
+
+                <button type="submit" style="font-size: 20px;">Join Mailing List</button>
+            </fieldset>
+        </form>
+    </section>
+
+    <footer>
+        <p style="text-align: center;">&copy; 2025 The Lit Lounge. All rights reserved.</p>
+    </footer>
+</body>
+</html>
 
