@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Lit Lounge</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <h1 style="font-size: 100px;">The Lit Lounge</h1>
+            <ul>
+                <li style="font-size: 34px;"><a href="index.html">Home</a></li>
+                <li style="font-size: 34px;"><a href="browse.html">Browse</a></li>
+                <li style="font-size: 34px;"><a href="about.html">About</a></li>
+                <li style="font-size: 34px;"><a href="cart.html">Cart</a></li>
+				<li style="font-size: 34px;"><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="centered-image">
+        <img src="images/hero-banner.png" alt="Books Banner">
+        <h2 style="font-size: 62px;">Where stories find their reader</h2>
+    </section>
+
+    <!-- Featured Books -->
+    <section class="featured-books">
+        <h3 style="font-size: 48px;">Featured Books</h3>
+        <div class="book-row">
+            <div class="book">
+                <img src="images/book1.png" width = "40%" height = "auto" alt="book 1 cover">
+                <p style="font-size: 32px;">Whispers of the Emberlight</p>
+                Z<!--<button style="font-size: 24px;">More</button>-->
+				<button style="font-size: 24px;" onclick="addToCart('Whispers of the Emberlight', 14.99)">Add to Cart</button>
+            </div>
+			<br>
+            <div class="book">
+                <img src="images/book2.png" width = "40%" height = "auto" alt="Book 2 Cover">
+                <p style="font-size: 32px;">Beneath a Hollow Sky</p>
+                <!--<button style="font-size: 24px;">More</button>-->
+				<button style="font-size: 24px;" onclick="addToCart('Beneath a Hollow Sky', 14.99)">Add to Cart</button>
+            </div>
+			<br>
+            <div class="book">
+                <img src="images/book3.png" width = "40%" height = "auto" alt="Book 3 Cover">
+                <p style="font-size: 32px;">The Clockmaker's Silence</p>
+                <!--<button style="font-size: 24px;">More</button>-->
+				<button style="font-size: 24px;" onclick="addToCart(&quot;The Clockmaker's Silence&quot;, 14.99)">Add to Cart</button>
+            </div>
+			<br>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <a style="font-size: 34px;" href="browse.html" class="browse-btn">Browse All Books</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 The Lit Lounge. All rights reserved.</p>
+    </footer>
+	
+<script>
+  function addToCart(title, price) {
+    const item = { title, price, qty: 1 };
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if item already exists
+    const existing = cart.find(book => book.title === title);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push(item);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${title} added to cart.`);
+  }
+</script>
+
+</body>
+</html>
 
