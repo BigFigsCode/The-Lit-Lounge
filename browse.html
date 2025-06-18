@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse Books - The Lit Lounge</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <h1 style="font-size: 100px;">The Lit Lounge</h1>
+            <ul>
+                <li style="font-size: 34px;"><a href="index.html">Home</a></li>
+                <li style="font-size: 34px;"><a href="browse.html">Browse</a></li>
+                <li style="font-size: 34px;"><a href="about.html">About</a></li>
+                <li style="font-size: 34px;"><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Browse Section -->
+    <section class="browse-section">
+        <h2 style="font-size: 62px; text-align: center;">Browse All Books</h2>
+
+        <table style="width: 80%; margin: 0 auto; font-size: 24px; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th>Cover</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Details</th>
+					<th>Buy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="images/book1.png" alt="Whispers of the Emberlight" width="100"></td>
+                    <td>Whispers of the Emberlight</td>
+                    <td>Mira Thorne</td>
+                    <td>$14.99</td>
+                    <!--<td><button style="font-size: 20px;">View</button></td>-->
+					<td><button style="font-size: 20px;" onclick="openModal('emberlight')">View</button></td>
+					<td><button style="font-size: 20px;" onclick="addToCart('Whispers of the Emberlight', 14.99)">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="images/book2.png" alt="Beneath a Hollow Sky" width="100"></td>
+                    <td>Beneath a Hollow Sky</td>
+                    <td>Elias Varrin</td>
+                    <td>$12.49</td>
+                    <!--<td><button style="font-size: 20px;">View</button></td>-->
+					<td><button style="font-size: 20px;" onclick="openModal('hollowsky')">View</button></td>
+					<td><button style="font-size: 20px;" onclick="addToCart('Beneath a Hollow Sky', 14.99)">Add to Cart</button></td>
+
+                </tr>
+                <tr>
+                    <td><img src="images/book3.png" alt="The Clockmaker's Silence" width="100"></td>
+                    <td>The Clockmaker's Silence</td>
+                    <td>Renata Vale</td>
+                    <td>$16.25</td>
+                    <!--<td><button style="font-size: 20px;">View</button></td>-->
+					<td><button style="font-size: 20px;" onclick="openModal('clockmaker')">View</button></td>	
+					<td><button style="font-size: 20px;" onclick="addToCart(&quot;The Clockmaker's Silence&quot;, 14.99)">Add to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p style="text-align: center;">&copy; 2025 The Lit Lounge. All rights reserved.</p>
+    </footer>
+	<!-- Modal Structure -->
+<div id="bookModal" class="modal" style="display:none;">
+  <div class="modal-content" style="background: white; padding: 20px; max-width: 600px; margin: 100px auto; border: 2px solid #333;">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDescription"></p>
+    <button onclick="closeModal()">OK</button>
+  </div>
+</div>
+<script>
+  // Mock data (this will later come from MongoDB)
+  const bookDetails = {
+    "emberlight": {
+      title: "Whispers of the Emberlight",
+      description: "A fantasy tale of rebellion and magic buried beneath the ashes of war."
+    },
+    "hollowsky": {
+      title: "Beneath a Hollow Sky",
+      description: "In a world without stars, a cartographer unearths a signal that could reshape time itself."
+    },
+    "clockmaker": {
+      title: "The Clockmaker's Silence",
+      description: "A journalist follows a trail of clues left by a mysterious clockmaker in 1890s Prague."
+    }
+  };
+
+  function openModal(bookKey) {
+    const data = bookDetails[bookKey];
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalDescription').textContent = data.description;
+    document.getElementById('bookModal').style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('bookModal').style.display = 'none';
+  }
+  
+</script>
+
+<script>
+  function addToCart(title, price) {
+    const item = { title, price, qty: 1 };
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Check if item already exists
+    const existing = cart.find(book => book.title === title);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push(item);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${title} added to cart.`);
+  }
+</script>
+
+</body>
+</html>
 
